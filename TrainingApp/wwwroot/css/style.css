@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
+
+body {
+	font-family: "STIX Two Text", serif;
+	background-color: #EEDCAE;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+/* !!таблиця 1 Група студентів*/
+.container {
+	display: flex;
+	align-items: flex-start; /* Aligns the tops of the columns */
+	background-color: #e2dcd0;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+	margin: 30px;
+	background-color: #d1c4b1;
+	padding: 60px;
+	width: 200px; /* Fixed width */
+}
+
+	.sidebar button {
+		margin-bottom: 10px;
+		padding: 10px;
+		width: 100%;
+		border: none;
+		background-color: #a89276;
+		color: white;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+		.sidebar button:hover {
+			background-color: #8e7a61;
+		}
+
+.content {
+	padding: 60px;
+	width: 780px;
+}
+
+.dropdownGroup {
+	width: 250px;
+	overflow: hidden;
+	border-radius: 5px;
+	margin: auto;
+	position: relative;
+}
+
+	.dropdownGroup span {
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+
+	.dropdownGroup select {
+		outline: none;
+		width: 100px;
+		border: none;
+		background-color: #a1927f;
+	}
+
+.groupContainer, .teacherContainer, .tarfiffContainer, .accountingContainer {
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+table {
+	margin-top: 30px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid #000;
+}
+
+th, td {
+	text-align: left;
+	padding: 15px;
+}
+
+
+
+.button-group {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+	.button-group button {
+		padding: 10px 20px;
+		margin-right: 10px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+.btn {
+	background-color: #8e7a61;
+	color: white;
+}
+
+.btn {
+	background-color: #a89276;
+	color: white;
+}
+
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	padding-top: 60px;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto; /* 5% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+}
+
+#studentFormGroup, #teacherForm, #tariffForm, #accForm {
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+}
+
+	#studentFormGroup input, #teacherForm input, #teacherForm select, #tariffForm select, #tariffForm input, #accForm select, #accForm input {
+		padding: 20px;
+		margin-bottom: 20px;
+		outline: none;
+	}
+
+	#studentFormGroup label, #teacherForm label, #tariffForm label, #accForm label {
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+		margin-left: 5px;
+	}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+.save {
+	background-color: #a89276;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100px;
+}
+
+	.save:hover {
+		opacity: 0.8;
+	}
+
+
+
+
+
+
+
+
+
+
+
+/* !!TEACHERS */
+.teacher, .tariff, .accounting, .report {
+	display: none;
+}
+
+
+
+
+/* !!Розрахунковий лист */
+.report-dropdown {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+/* Стилі для кнопки розгортання дропдауну */
+.toggle-report {
+	cursor: pointer;
+	padding: 5px;
+	background-color: #f1f1f1;
+	border: none;
+	text-align: left;
+}
+
+/* Стилі для вмісту дропдауну, спочатку приховані */
+.report-content {
+	display: none;
+	padding: 10px;
+}

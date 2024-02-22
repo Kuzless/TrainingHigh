@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Educational Interface</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- !!Sidebar -->
+		<div class="sidebar">
+			<button id="groupBtn">Група</button>
+			<button id="teacherBtn">Викладачі</button>
+			<button id="tarifBtn">Тариф</button>
+			<button id="accountingBtn">Облік виконання навантаження</button>
+		</div>
+
+		<!-- !!Table 1 "Groups" -->
+		<div class="content group">
+			<div class="dropdownGroup">
+				<span>Оберіть групу</span>
+				<select id="groupDropdown">
+				</select>
+			</div>
+			<div class="groupContainer">
+				<table id="groupTable">
+					<thead>
+						<tr>
+							<th>ПІБ</th>
+							<th>Телефон</th>
+							<th>Адреса проживання</th>
+							<th>Email</th>
+							<th>Видалити</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Rows will be added dynamically here using JavaScript -->
+					</tbody>
+				</table>
+			</div>
+
+			<div class="button-group">
+				<button class="btn add-btn" id="addStudentBtn2">Додати Студента</button>
+			</div>
+		</div>
+
+		<!-- !!Table 2 TEACHER -->
+		<div class="content teacher">
+			<div class="teacherContainer">
+				<table id="teacherTable">
+					<thead>
+						<tr>
+							<th>ПІБ</th>
+							<th>Телефон</th>
+							<th>Посада</th>
+							<th>Адреса</th>
+							<th>Email</th>
+							<th>Видалити</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Rows will be added dynamically here using JavaScript -->
+					</tbody>
+				</table>
+			</div>
+			<div class="button-group">
+				<button class="btn add-btn" id="addTeacherBtn2">Додати викладача</button>
+			</div>
+		</div>
+
+		<!-- !!Table 3 TARIF -->
+		<div class="content tariff">
+			<table id="tariffTable">
+				<thead>
+					<tr>
+						<th>Предмет</th>
+						<th>Вид заняття</th>
+						<th>Плата за годину, грн</th>
+						<th>Видалити</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Rows will be added dynamically here using JavaScript -->
+				</tbody>
+			</table>
+
+			<div class="button-group">
+				<button class="btn add-btn" id="addTariff">Додати тариф</button>
+			</div>
+		</div>
+
+		<!-- !!Table 4 Accounting -->
+		<div class="content accounting">
+			<div class="accountingContainer">
+				<table id="accountingTable">
+					<thead>
+						<tr>
+							<th>ПІБ Викладача</th>
+							<th>Група</th>
+							<th>Предмет</th>
+							<th>Вид заняття</th>
+							<th>Кількість годин за планом</th>
+							<th>Кількість відпрацьованих годин</th>
+							<th>Видалити</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Rows will be added dynamically here using JavaScript -->
+					</tbody>
+				</table>
+			</div>
+			<div class="button-group">
+				<button class="btn add-btn" id="addAcc">Додати інформацію</button>
+				<button class="btn add-btn" id="formZvit">Зформувати звіт</button>
+
+
+			</div>
+		</div>
+		<!--!! Modal Window "Groups" -->
+		<div id="myModalGroup" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="studentFormGroup">
+					<label for="pib">ПІБ</label>
+					<input type="text" id="pib" name="pib" placeholder="Введіть ПІБ" maxlength="15" required>
+
+					<label for="phone">Номер Телефону</label>
+					<input type="text" id="phone" name="phone" placeholder="Введіть номер телефону" maxlength="15" required>
+
+					<label for="address">Адреса проживання</label>
+					<input type="text" id="address" name="address" placeholder="Введіть адресу" maxlength="30" required>
+
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" placeholder="Введіть Еmail" maxlength="25" required>
+					<button type="button" class="save" onclick="saveDataStudent()">Зберегти</button>
+				</form>
+			</div>
+		</div>
+		<!--!! Modal Window "Teachers" -->
+		<div id="myModalTeacher" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="teacherForm">
+					<label for="teacherName">ПІБ</label>
+					<input type="text" id="teacherName" name="teacherName" placeholder="Введіть ПІБ" maxlength="15" required>
+
+					<label for="teacherPhoneNumber">Номер Телефону</label>
+					<input type="text" id="teacherPhoneNumber" name="teacherPhoneNumber" placeholder="Введіть номер телефону" maxlength="15" required>
+
+					<label for="teacherQual">Посада</label>
+					<select id="teacherQual" name="teacherQualification" maxlength="15">
+						<!-- Опции будут добавлены динамически с помощью JavaScript -->
+					</select>
+
+					<label for="teacherAddress">Адреса проживання</label>
+					<input type="text" id="teacherAddress" name="teacherAddress" placeholder="Введіть адресу" maxlength="30" required>
+
+					<label for="teacherEmail">Email</label>
+					<input type="email" id="teacherEmail" name="teacherEmail" placeholder="Введіть Еmail" maxlength="25" required>
+
+					<button type="button" class="save" onclick="saveDataTeacher()">Зберегти</button>
+				</form>
+			</div>
+			<!--!! Modal Window "Tariff" -->
+		</div>
+		<div id="myModalTariff" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="tariffForm">
+					<label for="tariffName">Предмет</label>
+					<input type="text" id="tariffName" name="tariffName" placeholder="Введіть назву предмету" maxlength="15" required>
+
+					<label for="tariffType">Тип тарифу</label>
+					<select id="tariffType" name="tariffType">
+						<!-- Опции будут добавлены динамически -->
+					</select>
+
+					<label for="tariffPrice">Плата за годину</label>
+					<input type="number" id="tariffPrice" name="tariffPrice" placeholder="Введіть значення" maxlength="7" required>
+
+					<button type="button" class="save" onclick="saveDataTariff()">Зберегти</button>
+				</form>
+			</div>
+		</div>
+		<!--!! Modal Window "Account" -->
+	</div>
+	<div id="myModalAcc" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<form id="accForm">
+				<label for="teacherAcc">ПІБ Викладача</label>
+				<select id="teacherAcc" name="teacherAcc">
+					<!-- Опции будут добавлены динамически -->
+				</select>
+
+				<label for="groupAcc">Група</label>
+				<select id="groupAcc" name="groupAcc">
+					<!-- Опции будут добавлены динамически -->
+				</select>
+
+				<label for="subjectAcc">Предмет</label>
+				<select id="subjectAcc" name="subject">
+					<!-- Опции будут добавлены динамически -->
+				</select>
+
+				<label for="lessonTypeAcc">Вид заняття</label>
+				<select id="lessonTypeAcc" name="lessonTypeAcc">
+					<!-- Опции будут добавлены динамически -->
+				</select>
+				<label for="hoursWorkedAcc">Кількість годин за планом</label>
+				<input type="number" id="hoursWorkedAcc" name="hoursWorkedAcc" maxlength="5" placeholder="Введіть кількість" required>
+
+				<label for="hoursWorkedDoneAcc">Кількість відпрацьованих годин</label>
+				<input type="number" id="hoursWorkedDoneAcc" name="hoursWorkedDoneAcc" placeholder="Введіть кількість" maxlength="5" required>
+
+				<button type="button" class="save" onclick="saveAccountData()">Зберегти</button>
+			</form>
+		</div>
+	</div>
+	<script src="js/accounts.js"></script>
+	<script src="js/groups.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/teachers.js"></script>
+	<script src="js/tariffs.js"></script>
+	<script src="js/zvit.js"></script>
+</body>
+ </html>

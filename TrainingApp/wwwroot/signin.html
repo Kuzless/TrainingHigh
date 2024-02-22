@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма входа</title>
+    <link rel="stylesheet" href="css/signin.css">
+</head>
+<body>
+
+    <div class="login-form">
+        <h2 class="table-heading">Авторизація</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <input type="text" id="username" placeholder="логін (admin)">
+            <input type="password" id="password" placeholder="пароль (admin)">
+            <input type="submit" value="Вхід">
+        </form>
+    </div>
+
+    <script src="js/signin.js"></script>
+
+</body>
+</html>
