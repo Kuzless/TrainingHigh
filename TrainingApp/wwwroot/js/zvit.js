@@ -64,7 +64,7 @@ function createTableRow(index, workedHour, teacherInfo, qualification) {
     row.appendChild(cellIndex);
 
     const cellWorkedHourId = document.createElement('td');
-    cellWorkedHourId.textContent = workedHour.id;
+    cellWorkedHourId.textContent = workedHour.teacherId;
     row.appendChild(cellWorkedHourId);
 
     const cellTeacherName = document.createElement('td');
