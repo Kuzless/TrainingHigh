@@ -82,8 +82,9 @@ function createTableRow(index, workedHour, teacherInfo, qualification) {
 function calculateSum(teacherInfo, qualification) {
     const pricePerHour = teacherInfo.subjectTariffDTO.pricePerHour;
     const workedHoursDone = teacherInfo.workedHoursDTO.workedHoursDone;
+    const planned = teacherInfo.workedHoursDTO.workedHoursPlanned;
     const coefficient = qualification.coefficient; // Теперь используем коэффициент напрямую из qualification
-    return (pricePerHour * workedHoursDone) * coefficient;
+    return (pricePerHour * workedHoursDone) * coefficient * (workedHoursDone / planned);
 }
 
 
